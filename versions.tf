@@ -10,7 +10,7 @@ terraform {
 
   cloud {
     workspaces {
-      name = "gcp-project-workspace"
+      name = "Terraform-IAC"
     }
   }
 }
