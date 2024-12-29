@@ -10,7 +10,7 @@ locals {
 
 # Enable required APIs
 resource "google_project_service" "services" {
-  for_each = toset(local.required_apis)a
+  for_each = toset(local.required_apis)
   
   project = google_project.main.project_id
   service = each.value
