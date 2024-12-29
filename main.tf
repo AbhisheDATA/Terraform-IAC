@@ -18,21 +18,3 @@ resource "google_project" "main" {
   project_id      = var.project_id
   billing_account = var.billing_account_id
 }
-
-# Enable required APIs
-resource "google_project_service" "services" {
-  for_each = toset([
-    "compute.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
-    "iam.googleapis.com",
-    "artifactregistry.googleapis.com"
-  ])
-  
-  project = google_project.main.project_id
-  service = each.value
-
-  disable_dependent_services = true
-  disable_on_destroy        = false
-
-  depends_on = [google_project.main]
-}
